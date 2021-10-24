@@ -6,11 +6,13 @@ import { ListItem, Typography, Container } from './common.styles'
 type SearchListProps = {
   results: CompanyType[]
   handleAddToPorfolio: (result: CompanyType) => void
+  loading: boolean
 }
 
 export const SearchList: React.FC<SearchListProps> = ({
   results,
   handleAddToPorfolio,
+  loading,
 }) => {
   const renderItem = (item: CompanyType) => (
     <ListItem
@@ -31,7 +33,7 @@ export const SearchList: React.FC<SearchListProps> = ({
     <Container>
       <Typography>Search Results</Typography>
       <List
-        loading={false}
+        loading={loading}
         itemLayout="horizontal"
         dataSource={results || []}
         bordered

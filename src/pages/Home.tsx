@@ -11,6 +11,7 @@ type HomeProps = {
 
 export const Home: React.FC<HomeProps> = ({ portfolios, setPortfolios }) => {
   const [results, setResults] = useState<CompanyType[]>([])
+  const [loading, setLoading] = useState<boolean>(false)
 
   const handleAddToPorfolio = (company: CompanyType) => {
     const checkIfExist = isDuplicateInPortfolio(company, portfolios)
@@ -31,10 +32,11 @@ export const Home: React.FC<HomeProps> = ({ portfolios, setPortfolios }) => {
   return (
     <Row gutter={40}>
       <Col lg={12} md={24} sm={24} xs={24}>
-        <SearchForm setResults={setResults} />
+        <SearchForm setResults={setResults} setLoading={setLoading} />
         <SearchList
           results={results}
           handleAddToPorfolio={handleAddToPorfolio}
+          loading={loading}
         />
       </Col>
       <Col lg={12} md={24} sm={24} xs={24}>

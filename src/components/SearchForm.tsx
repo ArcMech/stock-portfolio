@@ -1,4 +1,4 @@
-import { Row, Col } from 'antd'
+import { Row, Col, message } from 'antd'
 import SearchIcon from '@ant-design/icons/SearchOutlined'
 import { searchAPI } from '../api/api'
 import { Typography, Input } from './common.styles'
@@ -6,13 +6,24 @@ import { CompanyType } from '../types'
 
 type SearchFormProps = {
   setResults: (results: CompanyType[]) => void
+  setLoading: (loading: boolean) => void
 }
 
-export const SearchForm: React.FC<SearchFormProps> = ({ setResults }) => {
+export const SearchForm: React.FC<SearchFormProps> = ({
+  setResults,
+  setLoading,
+}) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    searchAPI(event.target.value).then((response) => {
-      setResults(response.data.bestMatches)
-    })
+    setLoading(true)
+    searchAPI(event.target.value)
+      .then((response) => {
+        setResults(response.data.bestMatches)
+        setLoading(false)
+      })
+      .catch((e) => {
+        message.error(`Error: ${e}`)
+        setLoading(false)
+      })
   }
   return (
     <Row>

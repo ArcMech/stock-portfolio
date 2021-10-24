@@ -45,3 +45,25 @@ export const SpinContainer = styled.div`
   min-height: 400px;
   width: 100%;
 `
+
+export const TableWrapper = styled.div`
+  .ant-table {
+    .ant-table-row:first-child,
+    .ant-table-row:nth-child(2n + 1) {
+      background-color: #fff;
+    }
+    .ant-table-row:nth-child(2n) {
+      background-color: #fafafa;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .ant-table {
+      overflow-x: auto;
+      td,
+      th {
+        padding: 8px 2px;
+      }
+    }
+  }
+`

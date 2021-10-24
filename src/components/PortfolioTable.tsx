@@ -1,6 +1,6 @@
-import { Table, Space, Button } from 'antd'
+import { Button, Table } from 'antd'
 import { Link } from 'react-router-dom'
-import { Typography } from './common.styles'
+import { Typography, TableWrapper } from './common.styles'
 import { AlignCell } from './types'
 import { CompanyType } from '../types'
 
@@ -18,6 +18,7 @@ export const PortfolioTable: React.FC<PortfolioTableProps> = ({
       title: 'Company Name',
       dataIndex: '2. name',
       align: 'center' as AlignCell,
+      elipsis: true,
       key: 'name',
       width: '50%',
       render: (text: React.ReactNode, record: CompanyType) => (
@@ -39,24 +40,24 @@ export const PortfolioTable: React.FC<PortfolioTableProps> = ({
       align: 'center' as AlignCell,
       width: '25%',
       render: (_: React.ReactNode, record: CompanyType) => (
-        <Space size="middle">
-          <Button type="link" onClick={() => handleRemoveFromPortfolio(record)}>
-            Remove
-          </Button>
-        </Space>
+        <Button type="link" onClick={() => handleRemoveFromPortfolio(record)}>
+          Remove
+        </Button>
       ),
     },
   ]
   return (
     <>
       <Typography>Your Portfolio</Typography>
-      <Table
-        bordered
-        columns={columns}
-        dataSource={portfolios}
-        pagination={false}
-        rowKey={(portfolios) => portfolios['1. symbol']}
-      />
+      <TableWrapper>
+        <Table
+          bordered
+          columns={columns}
+          dataSource={portfolios}
+          pagination={false}
+          rowKey={(portfolios) => portfolios['1. symbol']}
+        />
+      </TableWrapper>
     </>
   )
 }
