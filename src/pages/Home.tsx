@@ -1,11 +1,12 @@
 import { Row, Col } from 'antd'
-import { SearchForm, PortfolioTable } from '../components'
+import { SearchForm, SearchList, PortfolioTable } from '../components'
 
 export const Home = () => {
   return (
-    <Row>
+    <Row gutter={40}>
       <Col span={12}>
         <SearchForm />
+        <SearchList />
       </Col>
       <Col span={12}>
         <PortfolioTable />
