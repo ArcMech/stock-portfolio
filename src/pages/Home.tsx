@@ -1,12 +1,16 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Row, Col, message } from 'antd'
 import { SearchForm, SearchList, PortfolioTable } from '../components'
 import { isDuplicateInPortfolio } from '../utils'
 import { CompanyType } from '../types'
 
-export const Home = () => {
+type HomeProps = {
+  portfolios: CompanyType[]
+  setPortfolios: (portfolios: CompanyType[]) => void
+}
+
+export const Home: React.FC<HomeProps> = ({ portfolios, setPortfolios }) => {
   const [results, setResults] = useState<CompanyType[]>([])
-  const [portfolios, setPortfolios] = useState<CompanyType[]>([])
 
   const handleAddToPorfolio = (company: CompanyType) => {
     const checkIfExist = isDuplicateInPortfolio(company, portfolios)

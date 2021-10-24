@@ -29,3 +29,15 @@ export const Input = styled(AntInput)`
     border-bottom-right-radius: 22px;
   }
 `
+
+export const SpinContainer = styled.div`
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid #f8f8f8;
+  border-radius: 4px;
+  min-height: 400px;
+  width: 100%;
+`

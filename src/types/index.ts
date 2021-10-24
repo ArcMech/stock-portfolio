@@ -1,2 +1,3 @@
-export * from './Company'
-export * from './CompanyRequest'
+export * from './CompanyType'
+export * from './CompanyTypeRequest'
+export * from './OverviewType'

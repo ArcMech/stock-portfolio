@@ -1,17 +1,20 @@
-import { Home } from './pages'
+import { useState } from 'react'
+import { Home, Details } from './pages'
 import { PageLayout } from './layout'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { CompanyType } from './types'
 
 const App = () => {
+  const [portfolios, setPortfolios] = useState<CompanyType[]>([])
   return (
     <PageLayout>
       <Router>
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Home portfolios={portfolios} setPortfolios={setPortfolios} />
           </Route>
           <Route exact path="/:id">
-            ID PATH
+            <Details />
           </Route>
         </Switch>
       </Router>
