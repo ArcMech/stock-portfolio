@@ -1,18 +1,27 @@
 import { Row, Col } from 'antd'
 import SearchIcon from '@ant-design/icons/SearchOutlined'
+import { searchAPI } from '../api/api'
 import { Typography, Input } from './common.styles'
+import { CompanyType } from '../types'
 
-export const SearchForm = () => {
+type SearchFormProps = {
+  setResults: (results: CompanyType[]) => void
+}
+
+export const SearchForm: React.FC<SearchFormProps> = ({ setResults }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.value)
+    searchAPI(event.target.value).then((response) => {
+      setResults(response.data.bestMatches)
+    })
   }
   return (
     <Row>
       <Col span={24}>
-        <Typography>Company name</Typography>
+        <Typography>Company Name</Typography>
         <Input
+          size="large"
           addonBefore={<SearchIcon />}
-          placeholder="Search for..."
+          placeholder="Example: Apple"
           onChange={handleChange}
         />
       </Col>

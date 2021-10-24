@@ -2,7 +2,9 @@ import { List, Input as AntInput, Typography as AntTypography } from 'antd'
 import styled from 'styled-components/macro'
 
 export const ListItem = styled(List.Item)`
-  border-bottom: 1px solid #f0f0f0;
+  &&& {
+    border-bottom: 0;
+  }
   background-color: #fff;
 
   &:hover {
@@ -21,11 +23,9 @@ export const Input = styled(AntInput)`
   .ant-input-group-addon {
     border-top-left-radius: 22px;
     border-bottom-left-radius: 22px;
-    border: none;
   }
   input {
     border-top-right-radius: 22px;
     border-bottom-right-radius: 22px;
-    border: none;
   }
 `

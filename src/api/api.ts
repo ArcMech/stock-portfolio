@@ -1,9 +1,14 @@
+import axios from 'axios'
+import { CompanyRequest } from '../types'
+
+const apiKey = process.env.REACT_APP_API_KEY
+
 export const getOverviewAPI = (symbol: string) =>
-  fetch(
-    `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${symbol}&apikey=${process.env.API_KEY}`
+  axios(
+    `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${symbol}&apikey=${apiKey}`
   )
 
 export const searchAPI = (keyword: string) =>
-  fetch(
-    `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${keyword}&apikey=demo`
+  axios.get<CompanyRequest>(
+    `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${keyword}&apikey=${apiKey}`
   )

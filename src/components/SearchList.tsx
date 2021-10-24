@@ -1,20 +1,17 @@
 import { List, Button, Skeleton } from 'antd'
 import PlusIcon from '@ant-design/icons/PlusOutlined'
+import { CompanyType } from '../types'
 import { ListItem, Typography, Container } from './common.styles'
 
-const data = [
-  'Racing car sprays burning fuel into crowd.',
-  'Japanese princess to wed commoner.',
-  'Australian walks 100km after outback crash.',
-  'Man charged over missing wedding girl.',
-  'Los Angeles battles huge wildfires.',
-]
+type SearchListProps = {
+  results: CompanyType[]
+}
 
-export const SearchList = () => {
-  const renderItem = (item: React.ReactNode) => (
+export const SearchList: React.FC<SearchListProps> = ({ results }) => {
+  const renderItem = (item: CompanyType) => (
     <ListItem actions={[<Button size="small" icon={<PlusIcon />} />]}>
       <Skeleton avatar={false} title={false} loading={false} active>
-        <div>{item}</div>
+        <div>{item?.['2. name'] || ''}</div>
       </Skeleton>
     </ListItem>
   )
@@ -24,7 +21,7 @@ export const SearchList = () => {
       <List
         loading={false}
         itemLayout="horizontal"
-        dataSource={data}
+        dataSource={results || []}
         bordered
         size="small"
         renderItem={renderItem}
