@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Row, Col, message } from 'antd'
 import { SearchForm, SearchList, PortfolioTable } from '../components'
 import { isDuplicateInPortfolio } from '../utils'
@@ -30,14 +30,14 @@ export const Home: React.FC<HomeProps> = ({ portfolios, setPortfolios }) => {
 
   return (
     <Row gutter={40}>
-      <Col span={12}>
+      <Col lg={12} md={24} sm={24} xs={24}>
         <SearchForm setResults={setResults} />
         <SearchList
           results={results}
           handleAddToPorfolio={handleAddToPorfolio}
         />
       </Col>
-      <Col span={12}>
+      <Col lg={12} md={24} sm={24} xs={24}>
         <PortfolioTable
           portfolios={portfolios}
           handleRemoveFromPortfolio={handleRemoveFromPortfolio}

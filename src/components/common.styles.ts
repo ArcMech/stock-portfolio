@@ -4,6 +4,10 @@ import styled from 'styled-components/macro'
 export const ListItem = styled(List.Item)`
   &&& {
     border-bottom: 0;
+    @media (max-width: 576px) {
+      padding: 8px;
+      padding-right: 0;
+    }
   }
   background-color: #fff;
 

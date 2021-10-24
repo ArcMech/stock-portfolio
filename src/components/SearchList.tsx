@@ -22,7 +22,9 @@ export const SearchList: React.FC<SearchListProps> = ({
         />,
       ]}
     >
-      <div>{item?.['2. name'] || ''}</div>
+      <div>
+        {item?.['1. symbol'] || ''} - {item?.['2. name'] || ''}
+      </div>
     </ListItem>
   )
   return (

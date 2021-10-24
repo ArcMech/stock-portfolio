@@ -11,4 +11,15 @@ export const Header = styled(AntHeader)`
 export const Content = styled(AntContent)`
   min-height: calc(100vh - 64px);
   padding: 24px 40px;
+
+  @media (max-width: 576px) {
+    padding: 8px 16px;
+    .ant-table {
+      overflow-x: auto;
+      td,
+      th {
+        padding: 8px 2px;
+      }
+    }
+  }
 `

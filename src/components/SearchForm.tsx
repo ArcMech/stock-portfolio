@@ -16,7 +16,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({ setResults }) => {
   }
   return (
     <Row>
-      <Col span={24}>
+      <Col xs={24} sm={24} md={18} lg={18}>
         <Typography>Company Name</Typography>
         <Input
           size="large"
