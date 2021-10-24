@@ -3,6 +3,7 @@ import { useParams, useHistory } from 'react-router-dom'
 import { Button, Row, Col, Typography, message } from 'antd'
 import { LoadingSpinner } from '../components'
 import { getOverviewAPI } from '../api/api'
+import { transformToBilions } from '../utils'
 import { Empty } from './Details.styles'
 import { OverviewType } from '../types'
 
@@ -46,7 +47,8 @@ export const Details = () => {
           Address: {overview['Address']}
         </Typography.Paragraph>
         <Typography.Paragraph strong>
-          Market Capitalization: {overview['MarketCapitalization']}
+          Market Capitalization:{' '}
+          {transformToBilions(overview['MarketCapitalization'])}
         </Typography.Paragraph>
         <Typography.Paragraph>{overview['Description']}</Typography.Paragraph>
       </Col>
