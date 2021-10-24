@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Row, Col, message } from 'antd'
 import { SearchForm, SearchList, PortfolioTable } from '../components'
+import { BorderedCol } from './Home.styles'
 import { isDuplicateInPortfolio } from '../utils'
 import { CompanyType } from '../types'
 
@@ -31,14 +32,14 @@ export const Home: React.FC<HomeProps> = ({ portfolios, setPortfolios }) => {
 
   return (
     <Row gutter={40}>
-      <Col lg={12} md={24} sm={24} xs={24}>
+      <BorderedCol lg={12} md={24} sm={24} xs={24}>
         <SearchForm setResults={setResults} setLoading={setLoading} />
         <SearchList
           results={results}
           handleAddToPorfolio={handleAddToPorfolio}
           loading={loading}
         />
-      </Col>
+      </BorderedCol>
       <Col lg={12} md={24} sm={24} xs={24}>
         <PortfolioTable
           portfolios={portfolios}
