@@ -1,18 +1,28 @@
-import { List, Button, Skeleton } from 'antd'
+import { List, Button } from 'antd'
 import PlusIcon from '@ant-design/icons/PlusOutlined'
 import { CompanyType } from '../types'
 import { ListItem, Typography, Container } from './common.styles'
 
 type SearchListProps = {
   results: CompanyType[]
+  handleAddToPorfolio: (result: CompanyType) => void
 }
 
-export const SearchList: React.FC<SearchListProps> = ({ results }) => {
+export const SearchList: React.FC<SearchListProps> = ({
+  results,
+  handleAddToPorfolio,
+}) => {
   const renderItem = (item: CompanyType) => (
-    <ListItem actions={[<Button size="small" icon={<PlusIcon />} />]}>
-      <Skeleton avatar={false} title={false} loading={false} active>
-        <div>{item?.['2. name'] || ''}</div>
-      </Skeleton>
+    <ListItem
+      actions={[
+        <Button
+          size="small"
+          onClick={() => handleAddToPorfolio(item)}
+          icon={<PlusIcon />}
+        />,
+      ]}
+    >
+      <div>{item?.['2. name'] || ''}</div>
     </ListItem>
   )
   return (
