@@ -15,5 +15,5 @@ export const transformToBilions = (value: string) => {
   const number = +value
   if (isNaN(number)) return value
 
-  return `${(number / billion).toFixed(2)} bln`
+  return `${number / billion} bln`
 }
